@@ -48,4 +48,10 @@ describe('identifyCode', () => {
     expect(() => identifyCode('   ')).toThrow(CodeError)
     expect(() => identifyCode('a'.repeat(33))).toThrow(CodeError)
   })
+
+  it('normalizes whitespace and case for crypto codes', () => {
+    expect(identifyCode(' BTC ')).toEqual({ code: 'btc', market: 'crypto', kind: 'crypto' })
+    expect(identifyCode('BitCoin')).toEqual({ code: 'bitcoin', market: 'crypto', kind: 'crypto' })
+    expect(identifyCode('  ethereum  ')).toEqual({ code: 'ethereum', market: 'crypto', kind: 'crypto' })
+  })
 })

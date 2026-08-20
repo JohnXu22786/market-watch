@@ -155,6 +155,24 @@ wedging the plugin. Because the plugin and the CLI share one file, the engine
 re-reads it on every poll/json quotation, so edits made in a second process
 become visible without a restart.
 
+## FAQ
+
+- **Which data sources are used, and how fresh are quotes?** A-share stocks and
+  indices come from Tencent's public quote endpoint; crypto comes from
+  CoinGecko. See "Data sources and latency" above for the refresh cadence and
+  the documented staleness limits.
+- **Why is a symbol not recognized?** Symbols are normalized case-insensitively
+  (e.g. `sh600000` / `600000` for an SSE stock, `bitcoin` / `BTC` for crypto).
+  Run `dsh-market-watch list --known` (or the `market_known` tool) to see the
+  accepted forms; symbols outside the provider's universe are rejected.
+- **My alert did not fire.** Alerts are evaluated on poll ticks; check the rule
+  operator (`gte`/`lte`) and `--cooldown`, and that the field (e.g. `price`)
+  exists in the quote shape. Alerts can be listed with `dsh-market-watch alert
+  list` or the `market_alerts` tool.
+- **Where is my watchlist stored?** In `<dataDir>/watchlist.json` (`dataDir`
+  defaults to the dsh profile data dir, or `MARKET_WATCH_DATA_DIR` / the
+  `--data-dir` flag). Writes are atomic and corrupt files are quarantined.
+
 ## Development
 
 ```bash

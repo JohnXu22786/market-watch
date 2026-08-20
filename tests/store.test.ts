@@ -160,4 +160,16 @@ describe('JsonStore', () => {
     await store.load()
     expect(store.current().items).toEqual([])
   })
+
+  it('creates missing parent directories on first write', async () => {
+    const dir = await tempDir()
+    const nested = join(dir, 'sub', 'nested')
+    const store = new JsonStore(join(nested, 'watchlist.json'))
+    await store.load()
+    await store.mutate((s) => {
+      s.items.push({ code: 'bitcoin', market: 'crypto', kind: 'crypto', addedAt: 1 })
+      return s
+    })
+    await expect(readFile(join(nested, 'watchlist.json'), 'utf8')).resolves.toContain('bitcoin')
+  })
 })

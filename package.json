@@ -62,5 +62,13 @@
     "typescript": "~5.9.3",
     "vitest": "^3.2.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnXu22786/market-watch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JohnXu22786/market-watch/issues"
+  },
+  "homepage": "https://github.com/JohnXu22786/market-watch#readme"
 }

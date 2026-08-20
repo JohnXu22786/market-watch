@@ -1,5 +1,7 @@
 # dsh-market-watch
 
+**English · [简体中文](README.zh.md)**
+
 A financial market monitor bundle for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh):
 real-time quotes, a local watchlist, threshold alerts, periodic polling, and
 in-chat ASCII/mermaid charts for A-share stocks/indices and cryptocurrencies —

@@ -1,5 +1,7 @@
 # dsh-market-watch
 
+**[English](README.md) · 简体中文**
+
 基于 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）的金融行情监控插件：
 实时报价、本地自选列表、阈值提醒、定时轮询，以及在会话内的 ASCII/mermaid 图表渲染，
 覆盖 A 股股票/指数与加密货币——仅使用免费公共数据源。这是 dsh 生态中的首个行情/金融数据插件。

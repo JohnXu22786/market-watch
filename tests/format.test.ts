@@ -115,3 +115,18 @@ describe('id generation', () => {
     expect(a).not.toBe(b)
   })
 })
+
+describe('edge values', () => {
+  it('renders zero without a fake sign', () => {
+    expect(formatMoney(0)).toBe('0.00')
+    expect(formatSigned(0)).toBe('0.00')
+    expect(formatPercent(0)).toBe('0.00%')
+  })
+
+  it('renders non-finite values as a dash', () => {
+    expect(formatMoney(Number.NaN)).toBe('-')
+    expect(formatMoney(Number.POSITIVE_INFINITY)).toBe('-')
+    expect(formatPercent(Number.NaN)).toBe('-')
+    expect(formatSigned(Number.NaN)).toBe('-')
+  })
+})

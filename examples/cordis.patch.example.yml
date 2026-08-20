@@ -1,0 +1,24 @@
+# Example of overriding the plugin row by id in a profile's cordis.patch.yml.
+#
+# A patch replaces the row's ENTIRE config — there is no deep merge — so every
+# key you want to keep must be restated here. The values below are the plugin
+# defaults, shown explicitly.
+#
+# Copy this file's content into your profile's cordis.patch.yml (or use it as
+# a --patch overlay). Prefer leaving `dataDir` unset to inherit the default
+# $DSH_HOME/market-watch; set it only when you intentionally keep watch data
+# elsewhere (then also point the CLI there with --data-dir).
+- insert:
+    - id: market-watch
+      name: dsh-market-watch
+      config:
+        enabled: true            # master switch for polling + tools
+        pollIntervalSeconds: 60  # poll period (schema clamps to 5..86400)
+        dataDir: ~/.dsh/market-watch  # where watchlist.json lives
+        timeoutMs: 10000         # per-request network timeout
+        maxRetries: 2            # retries after the first attempt
+        retryBackoffBaseMs: 500  # exponential backoff base between retries
+        vsCurrency: usd          # crypto quote currency (CoinGecko id)
+        coingeckoDelayMs: 1200   # min spacing between CoinGecko calls (free tier)
+        agentNotify: true        # deliver alerts into live dsh agent sessions
+        agentWakeup: false       # wake an idle agent instead of quiet injection

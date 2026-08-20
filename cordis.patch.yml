@@ -1,0 +1,10 @@
+# dsh-market-watch bundle patch
+#
+# Inserts the plugin row over an empty profile root (or whichever layer order
+# the profile composes). The config field is deliberately omitted: every option
+# carries a default in the plugin's Config schema. To tune it, override the row
+# by id in your profile's cordis.patch.yml — remember a patch replaces the
+# WHOLE config value, so restate every key you keep. See examples/.
+- insert:
+    - id: market-watch
+      name: dsh-market-watch

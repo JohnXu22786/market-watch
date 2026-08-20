@@ -43,6 +43,14 @@ describe('compactNumber', () => {
     expect(compactNumber(12e9)).toBe('12b')
     expect(compactNumber(9.04)).toBe('9.04')
   })
+
+  it('handles negatives, extremes, and non-finite input', () => {
+    expect(compactNumber(-1500)).toBe('-1.5k')
+    expect(compactNumber(-0.5)).toBe('-0.50')
+    expect(compactNumber(1234567)).toBe('1.2m')
+    expect(compactNumber(Number.NaN)).toBe('-')
+    expect(compactNumber(Number.POSITIVE_INFINITY)).toBe('-')
+  })
 })
 
 describe('renderColumnChart', () => {
